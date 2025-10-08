@@ -3,7 +3,6 @@
 {
   home.shell.enableZshIntegration = false;
   programs.zsh = {
-    oh-my-zsh.enable = true;
     enable = true;
     autosuggestion.enable = true;
     dotDir = config.home.homeDirectory + "/.config/zsh";
@@ -19,10 +18,7 @@
         fi
 
         alias cat=bat
-
-        printf '\n%.0s' {1..$LINES}
     '';
-
-    syntaxHighlighting.enable = true;
+    syntaxHighlighting.enable = false;
   };
 }
