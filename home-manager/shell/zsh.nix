@@ -19,6 +19,6 @@
 
         alias cat=bat
     '';
-    syntaxHighlighting.enable = false;
+    syntaxHighlighting.enable = true;
   };
 }

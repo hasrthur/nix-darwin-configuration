@@ -6,7 +6,7 @@
       # ./ghostty
       ./direnv.nix
       ./oh-my-posh.nix
-      ./wezterm
+      # ./wezterm
       ./zsh.nix
   ];
 }

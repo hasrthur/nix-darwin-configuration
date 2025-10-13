@@ -4,14 +4,23 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix }:
   let
     configuration = { pkgs, lib, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -119,17 +128,19 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Arturs-Laptop
     darwinConfigurations."Arturs-Laptop" = nix-darwin.lib.darwinSystem {
-      modules = [ 
+      modules = [
+        stylix.darwinModules.stylix
         configuration
         inputs.home-manager.darwinModules.home-manager
-            {
-              users.users.artur.home = "/Users/artur";
-              
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              
-              home-manager.users.artur = import ./home.nix;
-            } ];
+        {
+          users.users.artur.home = "/Users/artur";
+          
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          
+          home-manager.users.artur = import ./home.nix;
+        }
+      ];
     };
 
     # Expose the package set, including overlays, for convenience.

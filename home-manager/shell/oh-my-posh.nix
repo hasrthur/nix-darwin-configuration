@@ -40,7 +40,7 @@
             {
               type = "ruby";
               foreground = "red";
-              template = "  {{ .Full }}";
+              template = "  <#FFFFFF>{{ .Full }}</>";
             }
             {
               background = "transparent";

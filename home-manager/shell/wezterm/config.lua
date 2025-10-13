@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
-config.color_scheme = 'Dracula (Official)'
+config.color_scheme = 'Catppuccin Mocha' -- Macchiato'
 
 config.font = wezterm.font 'CaskaydiaCove Nerd Font Mono'
 config.font_size = 18
