@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    catppuccin.url = "github:catppuccin/nix";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -16,7 +15,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, catppuccin, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
   let
     configuration = { pkgs, lib, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -135,7 +134,6 @@
           
           home-manager.users.artur.imports = [
             ./home.nix
-            catppuccin.homeModules.catppuccin
           ];
         }
       ];
