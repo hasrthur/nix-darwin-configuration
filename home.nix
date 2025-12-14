@@ -22,9 +22,9 @@
 
   home.packages = with pkgs; [
     bat
-    vim
     tig
     devenv
+    inetutils
   ];
 
   # This is to ensure programs are using ~/.config rather than
@@ -33,6 +33,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # programs.nnn.enable = true;
 }

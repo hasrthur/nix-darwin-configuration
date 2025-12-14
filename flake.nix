@@ -2,7 +2,8 @@
   description = "hasrthur's Darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    catppuccin.url = "github:catppuccin/nix";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -13,14 +14,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, catppuccin, ... }:
   let
     configuration = { pkgs, lib, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -129,7 +125,6 @@
     # $ darwin-rebuild build --flake .#Arturs-Laptop
     darwinConfigurations."Arturs-Laptop" = nix-darwin.lib.darwinSystem {
       modules = [
-        stylix.darwinModules.stylix
         configuration
         inputs.home-manager.darwinModules.home-manager
         {
@@ -138,7 +133,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           
-          home-manager.users.artur = import ./home.nix;
+          home-manager.users.artur.imports = [
+            ./home.nix
+            catppuccin.homeModules.catppuccin
+          ];
         }
       ];
     };

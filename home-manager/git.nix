@@ -3,11 +3,23 @@
 {
   programs.git = {
     enable = true;
-    userName = "Artur Borysov";
-    userEmail = "arthur.borisow@gmail.com";
-    signing.key = null;
-    signing.signByDefault = true;
-    extraConfig = {
+    signing = {
+      key = null;
+      signByDefault = true;
+    };
+    settings = {
+      user = {
+        name = "Artur Borysov";
+        email = "arthur.borisow@gmail.com";
+      };
+      alias = {
+        branch = "branch -vv";
+        ch = "checkout";
+        st = "status";
+        ls = "log --pretty=format:'%C(yellow)%h\ %ad%Cred%d\ %Creset%s%Cblue\ [%cn]' --decorate --date=short";
+        ll = "log --pretty=format:'%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]' --decorate --numstat --date=short";
+        old = "branch -r --sort=committerdate --format='[%(color:green)%(committerdate:relative)%(color:reset)] (%(authorname)) %(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject)'";
+      };
       core = {
         autocrlf = "input";
       };
@@ -27,14 +39,6 @@
         ui = "auto";
       };
     };
-    aliases = {
-      branch = "branch -vv";
-      ch = "checkout";
-      st = "status";
-      ls = "log --pretty=format:'%C(yellow)%h\ %ad%Cred%d\ %Creset%s%Cblue\ [%cn]' --decorate --date=short";
-      ll = "log --pretty=format:'%C(yellow)%h%Cred%d\ %Creset%s%Cblue\ [%cn]' --decorate --numstat --date=short";
-      old = "branch -r --sort=committerdate --format='[%(color:green)%(committerdate:relative)%(color:reset)] (%(authorname)) %(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject)'";
-    };
     ignores = [
       "/vendor/bundle"
       "vendor/bundle"
@@ -47,6 +51,10 @@
         path = "~/Projects/Gatekeeper/.gitconfig";
       }
     ];
+  };
+
+  programs = {
     diff-so-fancy.enable = true;
+    diff-so-fancy.enableGitIntegration = true;
   };
 }

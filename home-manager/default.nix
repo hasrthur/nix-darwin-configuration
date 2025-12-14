@@ -2,9 +2,10 @@
 
 {
 	imports = [
+		./catppuccin.nix
 		./git.nix
 		./gpg.nix
-		./just
+		./nh.nix
 		./shell
 	];
 }
