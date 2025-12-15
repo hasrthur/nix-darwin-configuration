@@ -1,4 +1,4 @@
-{ ... }:
+{ osConfig, ... }:
 
 {
   programs.git = {
@@ -9,8 +9,8 @@
     };
     settings = {
       user = {
-        name = "Artur Borysov";
-        email = "arthur.borisow@gmail.com";
+        name = osConfig.fullName;
+        email = osConfig.email;
       };
       alias = {
         branch = "branch -vv";

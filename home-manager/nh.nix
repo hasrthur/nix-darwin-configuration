@@ -1,8 +1,8 @@
-{ ... }:
+{ osConfig, ... }:
 
 {
   programs.nh = {
     enable = true;
-    flake = "/Users/artur/.config/nix-darwin";
+    flake = osConfig.flake;
   };
 }
