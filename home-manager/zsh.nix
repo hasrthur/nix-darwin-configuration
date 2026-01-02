@@ -10,6 +10,7 @@
         export EDITOR="vim"
         export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
         export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts":$PATH
+        export PATH="$HOME/.local/bin:$PATH"
 
         export DIRENV_LOG_FORMAT=
 

@@ -1,8 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
-  
-
   config = {
     users.users.${config.username}.home = "/Users/${config.username}";
     
