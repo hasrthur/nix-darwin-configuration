@@ -21,10 +21,9 @@
         p.css
         p.scss
       ]))
-      # which-key-nvim
-      # nvim-web-devicons
       nvim-lspconfig
       mini-nvim
+      conform-nvim
     ];
 
     extraPackages = with pkgs; [

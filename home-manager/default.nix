@@ -3,6 +3,7 @@
 {
 	imports = [
     ./direnv.nix
+    ./gh.nix
     ./ghostty.nix
 		./git.nix
 		./gpg.nix
